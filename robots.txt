@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vasylrdoc-hash.github.io/rvmed-site/sitemap.xml
