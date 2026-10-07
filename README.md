@@ -2,5 +2,4 @@
 
 Один файл `index.html` зі вбудованими стилями та зображеннями. Публікується через GitHub Pages з гілки `main`.
 
-Після підключення власного домену замінити адресу сайту в `index.html` (canonical, og:url, og:image, schema.org),
-`robots.txt` і `sitemap.xml`.
+Адреса сайту: https://rvmed.com.ua/ (домен зареєстровано в nic.ua, DNS-записи вказують на GitHub Pages; файл `CNAME` не видаляти).
