@@ -656,6 +656,17 @@ body.menu-open { overflow: hidden; }
   .hero__img { aspect-ratio: 4 / 3; object-position: 52% 0%; }
 }
 
+
+/* ім'я не переноситься і не розривається */
+.nowrap { white-space: nowrap; hyphens: none; -webkit-hyphens: none; }
+.photo__overlay-title, .photo__overlay-sub { hyphens: none; -webkit-hyphens: none; }
+/* фото відкривається збільшеним */
+.photo { cursor: zoom-in; }
+.photo:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 16px; background: rgb(8 20 40 / .9); cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox__img { display: block; max-width: 100%; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); width: auto; height: auto; border-radius: 6px; box-shadow: 0 10px 40px rgb(0 0 0 / .4); }
+.lightbox__close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .94); color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -918,7 +929,7 @@ body.menu-open { overflow: hidden; }
           </figure>
           <figure class="photo photo--doctor">
             <div class="photo__media">
-              <img class="photo__img" src="assets/img/doctor.webp" alt="Ревкевич Василь Йосипович — лікар ультразвукової діагностики" width="1200" height="825" loading="lazy" decoding="async">
+              <img class="photo__img" data-full="assets/img/doctor-full.webp" src="assets/img/doctor.webp" alt="Ревкевич Василь Йосипович — лікар ультразвукової діагностики" width="1200" height="825" loading="lazy" decoding="async">
             </div>
             <figcaption class="photo__overlay">
               <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>
@@ -929,7 +940,7 @@ body.menu-open { overflow: hidden; }
 
       <div class="about__body">
         <div class="about__text">
-          <p>Прийом веде лікар ультразвукової діагностики Ревкевич Василь Йосипович.</p>
+          <p>Прийом веде лікар ультразвукової діагностики <span class="nowrap">Ревкевич Василь Йосипович</span>.</p>
           <p>У кабінеті проводяться УЗД для дорослих та дітей за напрямками, представленими на сайті.</p>
           <p>Перед візитом можна заздалегідь переглянути рекомендації щодо підготовки до потрібного дослідження.</p>
         </div>
@@ -1550,6 +1561,52 @@ body.menu-open { overflow: hidden; }
   }
 })();
 
+</script>
+
+<div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Збільшене фото">
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрити фото">&times;</button>
+  <img class="lightbox__img" data-lightbox-img alt="">
+</div>
+
+<script>
+/* Збільшення фото за натисканням. Без залежностей. */
+(function () {
+  "use strict";
+  var box = document.querySelector("[data-lightbox]");
+  if (!box) return;
+  var big = box.querySelector("[data-lightbox-img]");
+  var closeButton = box.querySelector("[data-lightbox-close]");
+  var opener = null;
+  function open(figure) {
+    var img = figure.querySelector(".photo__img");
+    if (!img) return;
+    opener = figure;
+    big.src = img.getAttribute("data-full") || img.currentSrc || img.src;
+    big.alt = img.alt;
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  }
+  function close() {
+    if (box.hidden) return;
+    box.hidden = true;
+    big.removeAttribute("src");
+    document.body.style.overflow = "";
+    if (opener) opener.focus();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".photo"), function (figure) {
+    if (!figure.querySelector(".photo__img")) return;
+    figure.setAttribute("tabindex", "0");
+    figure.setAttribute("role", "button");
+    figure.setAttribute("aria-label", "Збільшити фото: " + figure.querySelector(".photo__img").alt);
+    figure.addEventListener("click", function () { open(figure); });
+    figure.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); open(figure); }
+    });
+  });
+  box.addEventListener("click", close);
+  document.addEventListener("keydown", function (event) { if (event.key === "Escape") close(); });
+})();
 </script>
 </body>
 </html>
