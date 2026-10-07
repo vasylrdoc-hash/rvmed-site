@@ -670,6 +670,9 @@ body.menu-open { overflow: hidden; }
 .lightbox[hidden] { display: none; }
 .lightbox__img { display: block; max-width: 100%; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); width: auto; height: auto; border-radius: 6px; box-shadow: 0 10px 40px rgb(0 0 0 / .4); }
 .lightbox__close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .94); color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; }
+/* підпис лікаря стоїть під фото, а не поверх нього: на вузькій картці він закривав обличчя */
+.photo--doctor .photo__overlay { position: static; max-width: none; margin-top: .6rem; padding: 0; background: none; border-radius: 0; box-shadow: none; align-items: flex-start; }
+.photo--doctor .photo__overlay .icon { margin-top: .1rem; }
 </style>
 </head>
 <body>
