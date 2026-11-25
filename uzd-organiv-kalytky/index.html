@@ -188,6 +188,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
 .disclaimer{font-size:.875rem;color:var(--muted);margin-top:1.5rem;max-width:44rem}
 @media (max-width:860px){.facts{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.doctor{grid-template-columns:1fr}.hdr .btn{display:none}}
+.price-list{list-style:none;margin:0;padding:0;max-width:44rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}.price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.95rem 1.25rem;border-top:1px solid var(--line);color:var(--ink-2)}.price-list li:first-child{border-top:0}.price-list b{color:var(--ink);font-weight:600;white-space:nowrap}.price-note{margin:.85rem 0 0;color:var(--muted);font-size:.95rem;max-width:44rem}
 </style>
 </head>
 <body>
@@ -252,7 +253,15 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
     </div>
   </section>
 
-  <section class="alt">
+  <section class="alt" id="price">
+    <div class="wrap">
+      <h2>Вартість</h2>
+      <ul class="price-list" role="list"><li><span>УЗД органів калитки</span><b>500&nbsp;грн</b></li><li><span>Комплекс: сечовий міхур + простата + органи калитки</span><b>700&nbsp;грн</b></li></ul>
+      <p class="price-note">Письмовий висновок і пояснення результатів одразу після обстеження входять у вартість.</p>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <h2>Як проходить обстеження</h2>
       <p class="sec-lead">Спеціальна підготовка не потрібна.</p>
@@ -264,7 +273,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
       </ol>
     </div>
   </section>
-  <section>
+  <section class="alt">
     <div class="wrap">
       <h2>Хто проводить дослідження</h2>
       <div class="doctor">
@@ -279,7 +288,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <h2>Часті запитання</h2>
       <details><summary>Чи потрібна підготовка до УЗД органів калитки?</summary><p>Спеціальна підготовка не потрібна. Якщо маєте результати попередніх УЗД або інших обстежень, візьміть їх із собою для порівняння.</p></details>

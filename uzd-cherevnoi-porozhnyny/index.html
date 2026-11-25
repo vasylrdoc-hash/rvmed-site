@@ -186,6 +186,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
 .disclaimer{font-size:.875rem;color:var(--muted);margin-top:1.5rem;max-width:44rem}
 @media (max-width:860px){.facts{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.doctor{grid-template-columns:1fr}.hdr .btn{display:none}}
+.price-list{list-style:none;margin:0;padding:0;max-width:44rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}.price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.95rem 1.25rem;border-top:1px solid var(--line);color:var(--ink-2)}.price-list li:first-child{border-top:0}.price-list b{color:var(--ink);font-weight:600;white-space:nowrap}.price-note{margin:.85rem 0 0;color:var(--muted);font-size:.95rem;max-width:44rem}
 </style>
 </head>
 <body>
@@ -249,7 +250,15 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
     </div>
   </section>
 
-  <section class="alt">
+  <section class="alt" id="price">
+    <div class="wrap">
+      <h2>Вартість</h2>
+      <ul class="price-list" role="list"><li><span>УЗД органів черевної порожнини</span><b>800&nbsp;грн</b></li></ul>
+      <p class="price-note">Письмовий висновок і пояснення результатів одразу після обстеження входять у вартість.</p>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
       <h2>Як підготуватися</h2>
       <p class="sec-lead">Дослідження проводиться натще — так органи краще видно, а жовчний міхур наповнений.</p>
@@ -261,7 +270,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
       </ol>
     </div>
   </section>
-  <section>
+  <section class="alt">
     <div class="wrap">
       <h2>Хто проводить дослідження</h2>
       <div class="doctor">
@@ -276,7 +285,7 @@ footer{font-size:.875rem;color:var(--muted);padding:1.5rem 0}
     </div>
   </section>
 
-  <section class="alt">
+  <section>
     <div class="wrap">
       <h2>Часті запитання</h2>
       <details><summary>Чи потрібна підготовка до УЗД черевної порожнини?</summary><p>Так. Дослідження бажано проводити натще: не приймати їжу приблизно 4–8 годин перед УЗД. Якщо дослідження заплановане на другу половину дня, можливий легкий ранній прийом їжі з достатнім інтервалом до обстеження.</p></details>
